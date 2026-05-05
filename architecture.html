@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genesis Protocol - Arquitetura Completa</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #020617; 
+            color: #e2e8f0; 
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .title { 
+            font-size: 24px; 
+            font-weight: 600; 
+            color: #22d3ee; 
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background: #22d3ee;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .subtitle { 
+            font-size: 14px; 
+            color: #94a3b8; 
+            margin-bottom: 15px;
+        }
+        .diagram-container {
+            background: #0f172a;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow: auto;
+        }
+        svg { 
+            width: 100%; 
+            height: auto;
+            min-height: 800px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #0f172a;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+            padding: 16px;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .card-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .card-dot.cyan { background: #22d3ee; }
+        .card-dot.emerald { background: #34d399; }
+        .card-dot.violet { background: #a78bfa; }
+        .card h3 { 
+            font-size: 14px; 
+            font-weight: 500; 
+            color: #e2e8f0; 
+        }
+        .card ul { 
+            list-style: none; 
+            font-size: 12px; 
+            color: #94a3b8; 
+        }
+        .card li { margin-bottom: 6px; }
+        .footer { 
+            text-align: center; 
+            font-size: 11px; 
+            color: #475569; 
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <div class="pulse-dot"></div>
+            GENESIS PROTOCOL - ARQUITETURA COMPLETA
+        </div>
+        <div class="subtitle">Swarm Intelligence P2P (Sem Orquestrador Central)</div>
+        <div style="font-size: 12px; color: #64748b;">🔗 https://github.com/aamsilva/genesis-protocol</div>
+    </div>
+
+    <div class="diagram-container">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background Grid Pattern -->
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="#020617"/>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+
+            <!-- Components -->
+            <!-- User Task (External) -->
+            <rect x="50" y="50" width="200" height="80" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <rect x="50" y="50" width="200" height="80" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="150" y="85" text-anchor="middle" fill="#e2e8f0" font-size="12">User Task</text>
+            <text x="150" y="105" text-anchor="middle" fill="#94a3b8" font-size="9">(Natural Language)</text>
+            <text x="150" y="125" text-anchor="middle" fill="#94a3b8" font-size="9">Ex: "Build React Dashboard"</text>
+
+            <!-- Task DNA Analyzer (Backend) -->
+            <rect x="300" y="50" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="300" y="50" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="400" y="85" text-anchor="middle" fill="#e2e8f0" font-size="12">Task DNA Analyzer</text>
+            <text x="400" y="105" text-anchor="middle" fill="#34d399" font-size="9">Capability Genes</text>
+            <text x="400" y="125" text-anchor="middle" fill="#94a3b8" font-size="9">Extracts: react, typescript, css</text>
+
+            <!-- Task Fragmenter (Backend) -->
+            <rect x="550" y="50" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="550" y="50" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="650" y="85" text-anchor="middle" fill="#e2e8f0" font-size="12">Task Fragmenter</text>
+            <text x="650" y="105" text-anchor="middle" fill="#34d399" font-size="9">Fragments</text>
+            <text x="650" y="125" text-anchor="middle" fill="#94a3b8" font-size="9">Splits DNA into tasks</text>
+
+            <!-- Agent Spawner (Backend) -->
+            <rect x="300" y="200" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="300" y="200" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="400" y="235" text-anchor="middle" fill="#e2e8f0" font-size="12">Agent Spawner</text>
+            <text x="400" y="255" text-anchor="middle" fill="#34d399" font-size="9">Dynamic Agents</text>
+            <text x="400" y="275" text-anchor="middle" fill="#94a3b8" font-size="9">Spawns from DNA</text>
+
+            <!-- Swarm Negotiator (Backend) -->
+            <rect x="550" y="200" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="550" y="200" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="650" y="235" text-anchor="middle" fill="#e2e8f0" font-size="12">Swarm Negotiator</text>
+            <text x="650" y="255" text-anchor="middle" fill="#34d399" font-size="9">P2P Negotiation</text>
+            <text x="650" y="275" text-anchor="middle" fill="#94a3b8" font-size="9">No central orchestrator</text>
+
+            <!-- Dynamic Agents (Multiple Backend) -->
+            <rect x="300" y="350" width="450" height="120" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="300" y="350" width="450" height="120" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="525" y="380" text-anchor="middle" fill="#e2e8f0" font-size="12">Dynamic Agents (P2P Swarm)</text>
+            <text x="525" y="400" text-anchor="middle" fill="#34d399" font-size="9">Autonomous Negotiation</text>
+            <text x="525" y="420" text-anchor="middle" fill="#94a3b8" font-size="9">Agent A: React+TS | Agent B: CSS | Agent C: API</text>
+            <text x="525" y="440" text-anchor="middle" fill="#94a3b8" font-size="9">Each has unique DNA & success rate</text>
+
+            <!-- Reputation System (Backend) -->
+            <rect x="50" y="200" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="50" y="200" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="150" y="235" text-anchor="middle" fill="#e2e8f0" font-size="12">Reputation System</text>
+            <text x="150" y="255" text-anchor="middle" fill="#34d399" font-size="9">Trust Scores</text>
+            <text x="150" y="275" text-anchor="middle" fill="#94a3b8" font-size="9">Tracks agent success</text>
+
+            <!-- Evolution Engine (Backend) -->
+            <rect x="50" y="350" width="200" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+            <rect x="50" y="350" width="200" height="80" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="150" y="385" text-anchor="middle" fill="#e2e8f0" font-size="12">Evolution Engine</text>
+            <text x="150" y="405" text-anchor="middle" fill="#34d399" font-size="9">DNA Mutation</text>
+            <text x="150" y="425" text-anchor="middle" fill="#94a3b8" font-size="9">Improves over time</text>
+
+            <!-- Result (External) -->
+            <rect x="300" y="550" width="450" height="80" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <rect x="300" y="550" width="450" height="80" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="525" y="585" text-anchor="middle" fill="#e2e8f0" font-size="12">Execution Result</text>
+            <text x="525" y="605" text-anchor="middle" fill="#94a3b8" font-size="9">Complete dashboard built by swarm</text>
+            <text x="525" y="625" text-anchor="middle" fill="#94a3b8" font-size="9">No central coordination</text>
+
+            <!-- Arrows -->
+            <!-- User Task -> DNA Analyzer -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+                </marker>
+            </defs>
+            <line x1="250" y1="90" x2="300" y2="90" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="275" y="80" text-anchor="middle" fill="#94a3b8" font-size="8">Input</text>
+
+            <!-- DNA Analyzer -> Fragmenter -->
+            <line x1="500" y1="90" x2="550" y2="90" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="525" y="80" text-anchor="middle" fill="#34d399" font-size="8">DNA</text>
+
+            <!-- Fragmenter -> Swarm Negotiator -->
+            <line x1="650" y1="130" x2="650" y2="200" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="670" y="165" text-anchor="start" fill="#34d399" font-size="8">Fragments</text>
+
+            <!-- DNA Analyzer -> Agent Spawner -->
+            <line x1="400" y1="130" x2="400" y2="200" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="420" y="165" text-anchor="start" fill="#34d399" font-size="8">DNA</text>
+
+            <!-- Agent Spawner -> Swarm -->
+            <line x1="400" y1="280" x2="400" y2="350" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="380" y="315" text-anchor="end" fill="#34d399" font-size="8">Spawned</text>
+
+            <!-- Swarm Negotiator -> Swarm -->
+            <line x1="650" y1="280" x2="650" y2="350" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="670" y="315" text-anchor="start" fill="#34d399" font-size="8">Assigns</text>
+
+            <!-- Reputation -> Agent Spawner -->
+            <line x1="250" y1="240" x2="300" y2="240" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="275" y="230" text-anchor="middle" fill="#34d399" font-size="8">Trust</text>
+
+            <!-- Swarm -> Result -->
+            <line x1="525" y1="470" x2="525" y2="550" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="545" y="510" text-anchor="start" fill="#94a3b8" font-size="8">Output</text>
+
+            <!-- Evolution -> DNA Analyzer (Feedback) -->
+            <line x1="250" y1="390" x2="300" y2="390" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="275" y="380" text-anchor="middle" fill="#34d399" font-size="8">Evolved DNA</text>
+
+            <!-- Legend -->
+            <rect x="900" y="50" width="250" height="180" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+            <text x="1025" y="80" text-anchor="middle" fill="#e2e8f0" font-size="12">Legend</text>
+            
+            <rect x="920" y="100" width="16" height="16" rx="2" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1"/>
+            <text x="945" y="112" fill="#94a3b8" font-size="9">External / User Input</text>
+            
+            <rect x="920" y="125" width="16" height="16" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+            <text x="945" y="137" fill="#34d399" font-size="9">Backend / Core Component</text>
+            
+            <line x1="920" y1="150" x2="936" y2="150" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="945" y="153" fill="#e2e8f0" font-size="9">Data Flow</text>
+            
+            <line x1="920" y1="170" x2="936" y2="170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="945" y="173" fill="#e2e8f0" font-size="9">Input/Output</text>
+        </svg>
+    </div>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-dot emerald"></div>
+                <h3>Core Components</h3>
+            </div>
+            <ul>
+                <li>• Task DNA Analyzer</li>
+                <li>• Task Fragmenter</li>
+                <li>• Agent Spawner</li>
+                <li>• Swarm Negotiator</li>
+                <li>• Reputation System</li>
+                <li>• Evolution Engine</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-dot cyan"></div>
+                <h3>Disruptive Features</h3>
+            </div>
+            <ul>
+                <li>• Zero central orchestrator</li>
+                <li>• P2P agent negotiation</li>
+                <li>• Dynamic DNA-based agents</li>
+                <li>• Autonomous role emergence</li>
+                <li>• Self-evolution</li>
+                <li>• No pre-defined roles</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-dot violet"></div>
+                <h3>Comparison</h3>
+            </div>
+            <ul>
+                <li>• Agency-agents: 201 static roles</li>
+                <li>• Genesis: 0 pre-defined roles</li>
+                <li>• LangGraph: Centralized graph</li>
+                <li>• Genesis: P2P swarm</li>
+                <li>• CrewAI: Human-defined crew</li>
+                <li>• Genesis: DNA-defined agents</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        Genesis Protocol v0.1 | Swarm Intelligence P2P | 🧬 No Central Orchestrator
+    </div>
+</body>
+</html>
